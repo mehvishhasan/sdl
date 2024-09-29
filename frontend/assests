@@ -1,0 +1,14 @@
+document.getElementById('notify-button').addEventListener('click', async () => {
+    try {
+        const response = await fetch('/notify', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        document.getElementById('response-message').textContent = data.message;
+    } catch (error) {
+        document.getElementById('response-message').textContent = 'Error: ' + error.message;
+    }
+});
